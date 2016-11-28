@@ -1,0 +1,36 @@
+---
+
+#- name: git clone vivisect
+#  git:
+#    repo=https://github.com/fireeye/flare-vivisect.git
+#    dest={{ toolsetdir }}/vivisect
+#    version={{ vivisect_version }}
+
+- block:
+    - name: install vivisect with pip
+      pip:
+        name: "{{ vivisect_pip_module }}"
+        state: present
+  when: vivisect_virtualenv_path is not defined or vivisect_virtualenv_path == ''
+
+- block:
+    - name: virtualenv dependencies
+      package: name={{ item }} state=present
+      with_items:
+        - python-virtualenv
+        - python-pip
+    - name: ensure virtualenv user {{ vivisect_virtualenv_user }} exists
+      user: "name={{ vivisect_virtualenv_user }} home={{ vivisect_virtualenv_home }} state=present"
+    - name: install vivisect python bindings - virtualenv
+      pip:
+        name: "{{ vivisect_pip_module }}"
+        state: present
+        virtualenv: "{{ vivisect_virtualenv_path }}"
+## FIXME! end with owner root
+      become: yes
+      become: "{{ vivisect_virtualenv_user }}"
+## FIXME! not idempotent
+    - name: ensure right permissions
+      file: "dest={{ vivisect_virtualenv_path }} state=directory owner={{ vivisect_virtualenv_user }} recurse=yes"
+  when: vivisect_virtualenv_path is defined and vivisect_virtualenv_path != ''
+
