@@ -28,9 +28,9 @@
         virtualenv: "{{ vivisect_virtualenv_path }}"
 ## FIXME! end with owner root
       become: yes
-      become: "{{ vivisect_virtualenv_user }}"
+      become_user: "{{ vivisect_virtualenv_user }}"
 ## FIXME! not idempotent
-    - name: ensure right permissions
-      file: "dest={{ vivisect_virtualenv_path }} state=directory owner={{ vivisect_virtualenv_user }} recurse=yes"
+#    - name: ensure right permissions
+#      file: "dest={{ vivisect_virtualenv_path }} state=directory owner={{ vivisect_virtualenv_user }} recurse=yes"
   when: vivisect_virtualenv_path is defined and vivisect_virtualenv_path != ''
 
