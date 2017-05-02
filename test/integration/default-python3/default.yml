@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+  vars:
+    - vivisect_pip: pip3
+    - vivisect_vcommand: virtualenv3
+    - vivisect_deps:
+        - python3-virtualenv
+        - python3-pip
+  roles:
+    - juju4.vivisect
+

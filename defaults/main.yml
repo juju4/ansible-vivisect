@@ -10,3 +10,14 @@ vivisect_pip_module: https://github.com/williballenthin/vivisect/zipball/master
 #vivisect_virtualenv_user: user
 #vivisect_virtualenv_home: /path/home
 
+## using python2 or 3?
+vivisect_pip: pip
+vivisect_vcommand: virtualenv
+vivisect_deps:
+  - python-virtualenv
+  - python-pip
+#vivisect_pip: pip3
+#vivisect_vcommand: virtualenv3
+#vivisect_deps:
+#  - python3-virtualenv
+#  - python3-pip

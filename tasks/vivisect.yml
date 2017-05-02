@@ -11,6 +11,7 @@
       pip:
         name: "{{ vivisect_pip_module }}"
         state: present
+        executable: "{{ vivisect_pip }}"
   when: vivisect_virtualenv_path is not defined or vivisect_virtualenv_path == ''
 
 - block:
@@ -26,6 +27,7 @@
         name: "{{ vivisect_pip_module }}"
         state: present
         virtualenv: "{{ vivisect_virtualenv_path }}"
+        virtualenv_command: "{{ vivisect_vcommand }}"
 ## FIXME! end with owner root
       become: yes
       become_user: "{{ vivisect_virtualenv_user }}"
