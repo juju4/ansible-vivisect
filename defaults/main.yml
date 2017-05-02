@@ -14,10 +14,14 @@ vivisect_pip_module: https://github.com/williballenthin/vivisect/zipball/master
 vivisect_pip: pip
 vivisect_vcommand: virtualenv
 vivisect_deps:
-  - python-virtualenv
+  - python
   - python-pip
+vivisect_virtualenv:
+  - python-virtualenv
 #vivisect_pip: pip3
 #vivisect_vcommand: virtualenv3
 #vivisect_deps:
-#  - python3-virtualenv
+#  - python3
 #  - python3-pip
+#vivisect_virtualenv:
+#  - python3-virtualenv

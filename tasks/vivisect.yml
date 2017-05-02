@@ -7,6 +7,9 @@
 #    version={{ vivisect_version }}
 
 - block:
+    - name: python dependencies
+      package: name={{ item }} state=present
+      with_items: "{{ vivisect_deps }}"
     - name: install vivisect with pip
       pip:
         name: "{{ vivisect_pip_module }}"
@@ -17,9 +20,7 @@
 - block:
     - name: virtualenv dependencies
       package: name={{ item }} state=present
-      with_items:
-        - python-virtualenv
-        - python-pip
+      with_items: "{{ vivisect_deps + [ vivisect_virtualenv ] }}"
     - name: ensure virtualenv user {{ vivisect_virtualenv_user }} exists
       user: "name={{ vivisect_virtualenv_user }} home={{ vivisect_virtualenv_home }} state=present"
     - name: install vivisect python bindings - virtualenv
