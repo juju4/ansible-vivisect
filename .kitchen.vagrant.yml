@@ -25,4 +25,9 @@ suites:
   - name: default
     run_list:
     attributes:
-
+  - name: default-python3
+    run_list:
+    attributes:
+  - name: default-python3-virtualenv
+    run_list:
+    attributes:
