@@ -18,6 +18,7 @@ vivisect_deps:
   - python-pip
 vivisect_virtualenv:
   - python-virtualenv
+  - virtualenv
 #vivisect_pip: pip3
 #vivisect_vcommand: virtualenv3
 #vivisect_deps:
@@ -25,3 +26,4 @@ vivisect_virtualenv:
 #  - python3-pip
 #vivisect_virtualenv:
 #  - python3-virtualenv
+#  - virtualenv

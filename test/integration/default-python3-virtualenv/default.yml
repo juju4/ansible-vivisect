@@ -9,6 +9,7 @@
         - python3-pip
     - vivisect_virtualenv:
         - python3-virtualenv
+        - virtualenv
     - vivisect_virtualenv_user: "_test"
     - vivisect_virtualenv_home: "/home/{{ vivisect_virtualenv_user }}"
     - vivisect_virtualenv_path: "{{ vivisect_virtualenv_home }}/env-python"
@@ -19,10 +20,12 @@
           - python34-pip
         vivisect_virtualenv:
           - python-virtualenv
+          - virtualenv
       when: ansible_os_family == "RedHat" and ansible_distribution_version.split('.')[0] == '7'
     - set_fact:
         vivisect_virtualenv:
           - python-virtualenv
+          - virtualenv
       when: ansible_distribution_release == 'trusty'
     - set_fact:
         vivisect_vcommand: /usr/lib/python3/dist-packages/virtualenv.py
