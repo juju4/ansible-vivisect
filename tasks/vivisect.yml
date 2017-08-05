@@ -29,7 +29,7 @@
         name: "{{ vivisect_pip_module }}"
         state: present
         virtualenv: "{{ vivisect_virtualenv_path }}"
-        virtualenv_command: "virtualenv -p python3"
+        virtualenv_python: "python3"
       become: yes
       become_user: "{{ vivisect_virtualenv_user }}"
       when: vivisect_pip == 'pip3'

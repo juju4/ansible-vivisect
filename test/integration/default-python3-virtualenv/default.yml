@@ -20,12 +20,10 @@
           - python34-pip
         vivisect_virtualenv:
           - python-virtualenv
-          - virtualenv
       when: ansible_os_family == "RedHat" and ansible_distribution_version.split('.')[0] == '7'
     - set_fact:
         vivisect_virtualenv:
           - python-virtualenv
-          - virtualenv
       when: ansible_distribution_release == 'trusty'
     - set_fact:
         vivisect_vcommand: /usr/lib/python3/dist-packages/virtualenv.py
