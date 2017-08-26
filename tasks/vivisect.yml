@@ -18,9 +18,13 @@
   when: vivisect_virtualenv_path is not defined or vivisect_virtualenv_path == ''
 
 - block:
-    - name: virtualenv dependencies
+    - name: virtualenv package dependencies
       package: name={{ item }} state=present
       with_items: "{{ vivisect_deps + [ vivisect_virtualenv ] }}"
+    ## https://github.com/pypa/virtualenv/issues/463
+    - name: virtualenv pip dependencies
+      package: name={{ item }} state=present
+      with_items: "{{ vivisect_pip_virtualenv }}"
     - name: ensure virtualenv user {{ vivisect_virtualenv_user }} exists
       user: "name={{ vivisect_virtualenv_user }} home={{ vivisect_virtualenv_home }} state=present"
 

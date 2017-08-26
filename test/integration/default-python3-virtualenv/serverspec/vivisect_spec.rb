@@ -10,7 +10,7 @@ set :backend, :exec
 #end
 
 
-describe command('pip3 freeze') do
+describe command('/home/_test/env-python/bin/pip3 freeze') do
   its(:stdout) { should match /vivisect/ }
   its(:exit_status) { should eq 0 }
 end

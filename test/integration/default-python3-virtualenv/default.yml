@@ -19,8 +19,7 @@
         vivisect_deps:
           - python34
           - python34-pip
-        vivisect_virtualenv:
-          - python-virtualenv
+        vivisect_virtualenv: []
         vivisect_python: python3.4
       when: ansible_os_family == "RedHat" and ansible_distribution_version.split('.')[0] == '7'
     - set_fact:
