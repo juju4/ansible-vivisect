@@ -23,7 +23,7 @@
       with_items: "{{ vivisect_deps + [ vivisect_virtualenv ] }}"
     ## https://github.com/pypa/virtualenv/issues/463
     - name: virtualenv pip dependencies
-      package: name={{ item }} state=present
+      pip: name={{ item }} state=present
       with_items: "{{ vivisect_pip_virtualenv }}"
     - name: ensure virtualenv user {{ vivisect_virtualenv_user }} exists
       user: "name={{ vivisect_virtualenv_user }} home={{ vivisect_virtualenv_home }} state=present"
