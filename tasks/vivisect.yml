@@ -10,22 +10,30 @@
     - name: python dependencies
       package: name={{ item }} state=present
       with_items: "{{ vivisect_deps }}"
+      register: pkg_result
+      until: pkg_result is success
     - name: install vivisect with pip
       pip:
         name: "{{ vivisect_pip_module }}"
         state: present
         executable: "{{ vivisect_pip }}"
+      register: pkg_result
+      until: pkg_result is success
   when: vivisect_virtualenv_path is not defined or not vivisect_virtualenv_path
 
 - block:
     - name: virtualenv package dependencies
       package: name={{ item }} state=present
       with_items: "{{ vivisect_deps + [ vivisect_virtualenv ] }}"
+      register: pkg_result
+      until: pkg_result is success
     ## https://github.com/pypa/virtualenv/issues/463
     - name: virtualenv pip dependencies
       pip:
         name: "{{ vivisect_pip_virtualenv }}"
         state: present
+      register: pkg_result
+      until: pkg_result is success
     - name: ensure virtualenv user {{ vivisect_virtualenv_user }} exists
       user: "name={{ vivisect_virtualenv_user }} home={{ vivisect_virtualenv_home }} state=present"
 
@@ -37,6 +45,8 @@
         virtualenv_python: "{{ vivisect_python }}"
       become: yes
       become_user: "{{ vivisect_virtualenv_user }}"
+      register: pkg_result
+      until: pkg_result is success
 
 ## FIXME! not idempotent
 #    - name: ensure right permissions
