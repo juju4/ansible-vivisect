@@ -15,7 +15,7 @@
         name: "{{ vivisect_pip_module }}"
         state: present
         executable: "{{ vivisect_pip }}"
-  when: vivisect_virtualenv_path is not defined or vivisect_virtualenv_path == ''
+  when: vivisect_virtualenv_path is not defined or not vivisect_virtualenv_path
 
 - block:
     - name: virtualenv package dependencies
@@ -40,5 +40,4 @@
 ## FIXME! not idempotent
 #    - name: ensure right permissions
 #      file: "dest={{ vivisect_virtualenv_path }} state=directory owner={{ vivisect_virtualenv_user }} recurse=yes"
-  when: vivisect_virtualenv_path is defined and vivisect_virtualenv_path != ''
-
+  when: vivisect_virtualenv_path is defined and vivisect_virtualenv_path
