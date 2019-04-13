@@ -11,6 +11,7 @@
         - python3-virtualenv
   pre_tasks:
     - set_fact:
+        vivisect_pip: pip3.4
         vivisect_deps:
           - python34
           - python34-pip
