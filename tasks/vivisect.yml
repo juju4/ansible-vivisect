@@ -34,6 +34,7 @@
         state: present
       register: pkg_result
       until: pkg_result is success
+      when: vivisect_pip_virtualenv != []
     - name: ensure virtualenv user {{ vivisect_virtualenv_user }} exists
       user: "name={{ vivisect_virtualenv_user }} home={{ vivisect_virtualenv_home }} state=present"
 
