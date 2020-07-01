@@ -3,13 +3,19 @@
 sudo: required
 
 env:
-#  - distribution: centos
-#    version: 6
-#    init: /sbin/init
-#    run_opts: ""
+  - distribution: centos
+    version: 8
+    init: /usr/lib/systemd/systemd
+    run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
+    suite: default
   - distribution: centos
     version: 7
     init: /usr/lib/systemd/systemd
+    run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
+    suite: default
+  - distribution: ubuntu
+    version: 20.04
+    init: /lib/systemd/systemd
     run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
     suite: default
   - distribution: ubuntu
@@ -17,59 +23,35 @@ env:
     init: /lib/systemd/systemd
     run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
     suite: default
-  - distribution: ubuntu
-    version: 16.04
-    init: /lib/systemd/systemd
+  - distribution: centos
+    version: 8
+    init: /usr/lib/systemd/systemd
     run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
-    suite: default
-  - distribution: ubuntu
-    version: 14.04
-    init: /sbin/init
-    run_opts: ""
-    suite: default
-#  - distribution: ubuntu
-#    version: 12.04
-#    init: /sbin/init
-#    run_opts: ""
-#  - distribution: alpine
-#    version: 3.4
-#    init: /sbin/init
-#    run_opts: ""
+    suite: default-python3
   - distribution: centos
     version: 7
     init: /usr/lib/systemd/systemd
     run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
     suite: default-python3
   - distribution: ubuntu
-    version: 16.04
+    version: 18.04
     init: /lib/systemd/systemd
     run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
     suite: default-python3
+  - distribution: centos
+    version: 8
+    init: /usr/lib/systemd/systemd
+    run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
+    suite: default-python3-virtualenv
   - distribution: ubuntu
-    version: 14.04
-    init: /sbin/init
-    run_opts: ""
-    suite: default-python3
-## FIXME! ERROR: The executable /home/_test/env-python/bin/python3.4 is not functioning
-#  - distribution: centos
-#    version: 7
-#    init: /usr/lib/systemd/systemd
-#    run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
-#    suite: default-python3-virtualenv
+    version: 20.04
+    init: /lib/systemd/systemd
+    run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
+    suite: default-python3-virtualenv
   - distribution: ubuntu
     version: 18.04
     init: /lib/systemd/systemd
     run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
-    suite: default-python3-virtualenv
-  - distribution: ubuntu
-    version: 16.04
-    init: /lib/systemd/systemd
-    run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
-    suite: default-python3-virtualenv
-  - distribution: ubuntu
-    version: 14.04
-    init: /sbin/init
-    run_opts: ""
     suite: default-python3-virtualenv
 
 services:
