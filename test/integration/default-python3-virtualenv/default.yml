@@ -35,7 +35,7 @@
           - python-virtualenv
       when: ansible_distribution_release == 'trusty'
     - set_fact:
-    - vivisect_vcommand: virtualenv
+        vivisect_vcommand: virtualenv
       when: ansible_distribution_release == 'focal'
   roles:
     - juju4.vivisect
