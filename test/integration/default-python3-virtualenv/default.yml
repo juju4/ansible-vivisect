@@ -36,6 +36,6 @@
       when: ansible_distribution_release == 'trusty'
     - set_fact:
         vivisect_vcommand: virtualenv
-      when: ansible_distribution_release == 'focal'
+      when: ansible_distribution_release == 'focal' or ansible_distribution_release == 'bionic'
   roles:
     - juju4.vivisect
