@@ -43,6 +43,7 @@
         name: "{{ vivisect_pip_module }}"
         state: present
         virtualenv: "{{ vivisect_virtualenv_path }}"
+        virtualenv_command: "{{ vivisect_vcommand | default('virtualenv') }}"
         virtualenv_python: "{{ vivisect_python }}"
       become: yes
       become_user: "{{ vivisect_virtualenv_user }}"
