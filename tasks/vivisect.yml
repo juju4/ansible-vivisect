@@ -1,10 +1,10 @@
 ---
 
-#- name: git clone vivisect
-#  git:
-#    repo=https://github.com/fireeye/flare-vivisect.git
-#    dest={{ toolsetdir }}/vivisect
-#    version={{ vivisect_version }}
+# - name: git clone vivisect
+#   git:
+#     repo=https://github.com/fireeye/flare-vivisect.git
+#     dest={{ toolsetdir }}/vivisect
+#     version={{ vivisect_version }}
 
 - block:
     - name: python dependencies
@@ -50,7 +50,7 @@
       register: pkg_result
       until: pkg_result is success
 
-## FIXME! not idempotent
-#    - name: ensure right permissions
-#      file: "dest={{ vivisect_virtualenv_path }} state=directory owner={{ vivisect_virtualenv_user }} recurse=yes"
+      ## FIXME! not idempotent
+      # - name: ensure right permissions
+      #   file: "dest={{ vivisect_virtualenv_path }} state=directory owner={{ vivisect_virtualenv_user }} recurse=yes"
   when: vivisect_virtualenv_path is defined and vivisect_virtualenv_path
