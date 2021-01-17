@@ -9,7 +9,7 @@
   remote_user: root
   pre_tasks:
     - name: Ubuntu | Install python3
-      raw: test -e /usr/bin/python3 || (apt -y update && apt install -y python3-minimal)
+      raw: test -e /usr/bin/python3 || (apt -y update && apt install -y python3-minimal python3-setuptools)
       register: python3
       changed_when: "'installed' in python3.stdout"
       when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int >= 16)
