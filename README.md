@@ -56,6 +56,7 @@ $ vagrant ssh
 
 ## Troubleshooting & Known issues
 
+* Python3 is not supported. Work in Progress. [#163](https://github.com/vivisect/vivisect/pull/163), [#289](https://github.com/vivisect/vivisect/pull/289), [#328](https://github.com/vivisect/vivisect/pull/328)
 
 ## License
 
