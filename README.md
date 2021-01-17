@@ -1,5 +1,5 @@
-[![Build Status - Master](https://travis-ci.org/juju4/ansible-vivisect.svg?branch=master)](https://travis-ci.org/juju4/ansible-vivisect)
-[![Build Status - Devel](https://travis-ci.org/juju4/ansible-vivisect.svg?branch=devel)](https://travis-ci.org/juju4/ansible-vivisect/branches)
+[![Build Status - Master](https://travis-ci.com/juju4/ansible-vivisect.svg?branch=master)](https://travis-ci.com/juju4/ansible-vivisect)
+[![Build Status - Devel](https://travis-ci.com/juju4/ansible-vivisect.svg?branch=devel)](https://travis-ci.com/juju4/ansible-vivisect/branches)
 # Vivisect ansible role
 
 Ansible role to setup Vivisect, static analysis / emulation / symbolik analysis framework.
