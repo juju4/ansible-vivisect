@@ -1,0 +1,13 @@
+---
+
+- name: Verify
+  hosts: vivi
+  tasks:
+  - name: Validate installed pip packages
+    command: pip freeze
+    changed_when: false
+    register: pip
+  - name: Validate pip
+    assert:
+      that: >
+        "'vivisect' in pip.stdout"
