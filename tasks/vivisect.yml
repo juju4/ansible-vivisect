@@ -36,8 +36,11 @@
       until: pkg_result is success
       when: vivisect_pip_virtualenv != []
     - name: ensure virtualenv user {{ vivisect_virtualenv_user }} exists
-      user: "name={{ vivisect_virtualenv_user }} home={{ vivisect_virtualenv_home }} state=present"
-
+      user:
+        name: "{{ vivisect_virtualenv_user }}"
+        home: "{{ vivisect_virtualenv_home }}"
+        state: present
+      when: vivisect_virtualenv_user != 'root' and vivisect_virtualenv_user != 'nobody' and vivisect_virtualenv_user != 'www-data'
     - name: install vivisect python bindings - virtualenv
       pip:
         name: "{{ vivisect_pip_module }}"
