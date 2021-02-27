@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: vivisect
   author: juju4
   description: setup Vivisect, static analysis / emulation / symbolik analysis framework
   license: BSD
