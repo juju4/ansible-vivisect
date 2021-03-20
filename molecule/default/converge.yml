@@ -21,12 +21,12 @@
     - name: Gather Facts
       setup:
       when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int >= 16)
-    - name: Ubuntu Bionic+, Redhat 8+ | Enforce python3 for ansible
+    - name: Ubuntu Bionic+, Redhat 7+ | Enforce python3 for ansible
       set_fact:
         ansible_python_interpreter: /usr/bin/python3
       when: >
         (ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int >= 16) or
-        (ansible_os_family == "RedHat" and ansible_distribution_major_version|int >= 8)
+        (ansible_os_family == "RedHat" and ansible_distribution_major_version|int >= 7)
     - name: Ubuntu Focal | Enforce python3 as only one
       set_fact:
         vivisect_pip: pip3
