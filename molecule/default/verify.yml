@@ -14,11 +14,11 @@
       when: >
         (ansible_os_family == "RedHat" and ansible_distribution_major_version|int >= 7)
   tasks:
-  - name: Validate installed pip packages
-    command: "{{ vivisect_pip }} freeze"
-    changed_when: false
-    register: pip
-  - name: Validate pip
-    assert:
-      that: >
-        "'vivisect' in pip.stdout"
+    - name: Validate installed pip packages
+      command: "{{ vivisect_pip }} freeze"
+      changed_when: false
+      register: pip
+    - name: Validate pip
+      assert:
+        that: >
+          "'vivisect' in pip.stdout"
