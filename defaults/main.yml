@@ -3,7 +3,7 @@
 toolsetdir: /opt/tools
 
 vivisect_version: HEAD
-vivisect_pip_module: https://github.com/williballenthin/vivisect/zipball/master
+vivisect_pip_module: https://github.com/vivisect/vivisect/zipball/master
 
 ## if undefined, global install, else in corresponding virtualenv
 # vivisect_virtualenv_path: /path/to/env
