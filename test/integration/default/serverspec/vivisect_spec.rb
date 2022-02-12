@@ -14,4 +14,3 @@ describe command('pip freeze') do
   its(:stdout) { should match /vivisect/ }
   its(:exit_status) { should eq 0 }
 end
-
