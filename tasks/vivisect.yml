@@ -6,7 +6,8 @@
 #     dest={{ toolsetdir }}/vivisect
 #     version={{ vivisect_version }}
 
-- block:
+- name: system pip
+  block:
     - name: python dependencies
       ansible.builtin.package: name={{ item }} state=present
       with_items: "{{ vivisect_deps }}"
@@ -21,7 +22,8 @@
       until: pkg_result is success
   when: vivisect_virtualenv_path is not defined or not vivisect_virtualenv_path
 
-- block:
+- name: virtualenv pip
+  block:
     - name: virtualenv package dependencies
       ansible.builtin.package: name={{ item }} state=present
       with_items: "{{ vivisect_deps + [ vivisect_virtualenv ] }}"
