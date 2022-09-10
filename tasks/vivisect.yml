@@ -6,14 +6,14 @@
 #     dest={{ toolsetdir }}/vivisect
 #     version={{ vivisect_version }}
 
-- name: system pip
+- name: System pip
   block:
-    - name: python dependencies
+    - name: Python dependencies
       ansible.builtin.package: name={{ item }} state=present
       with_items: "{{ vivisect_deps }}"
       register: pkg_result
       until: pkg_result is success
-    - name: install vivisect with pip
+    - name: Install vivisect with pip
       ansible.builtin.pip:
         name: "{{ vivisect_pip_module }}"
         state: present
@@ -22,28 +22,28 @@
       until: pkg_result is success
   when: vivisect_virtualenv_path is not defined or not vivisect_virtualenv_path
 
-- name: virtualenv pip
+- name: Virtualenv pip
   block:
-    - name: virtualenv package dependencies
+    - name: Virtualenv package dependencies
       ansible.builtin.package: name={{ item }} state=present
-      with_items: "{{ vivisect_deps + [ vivisect_virtualenv ] }}"
+      with_items: "{{ vivisect_deps + [vivisect_virtualenv] }}"
       register: pkg_result
       until: pkg_result is success
     ## https://github.com/pypa/virtualenv/issues/463
-    - name: virtualenv pip dependencies
+    - name: Virtualenv pip dependencies
       ansible.builtin.pip:
         name: "{{ vivisect_pip_virtualenv }}"
         state: present
       register: pkg_result
       until: pkg_result is success
       when: vivisect_pip_virtualenv != []
-    - name: ensure virtualenv user {{ vivisect_virtualenv_user }} exists
+    - name: Ensure virtualenv user {{ vivisect_virtualenv_user }} exists
       ansible.builtin.user:
         name: "{{ vivisect_virtualenv_user }}"
         home: "{{ vivisect_virtualenv_home }}"
         state: present
       when: vivisect_virtualenv_user != 'root' and vivisect_virtualenv_user != 'nobody' and vivisect_virtualenv_user != 'www-data'
-    - name: install vivisect python bindings - virtualenv
+    - name: Install vivisect python bindings - virtualenv
       ansible.builtin.pip:
         name: "{{ vivisect_pip_module }}"
         state: present
