@@ -32,11 +32,6 @@
         vivisect_virtualenv: []
         vivisect_python: python3.4
       when: ansible_os_family == "RedHat" and ansible_distribution_version.split('.')[0] == '7'
-    - name: Trusty | set fact
-      set_fact:
-        vivisect_virtualenv:
-          - python-virtualenv
-      when: ansible_distribution_release == 'trusty'
     - name: Bionic,Focal | set fact
       set_fact:
         vivisect_vcommand: virtualenv
