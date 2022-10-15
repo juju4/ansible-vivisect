@@ -7,9 +7,12 @@
 #     version={{ vivisect_version }}
 
 - name: System pip
+  when: vivisect_virtualenv_path is not defined or not vivisect_virtualenv_path
   block:
     - name: Python dependencies
-      ansible.builtin.package: name={{ item }} state=present
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: "present"
       with_items: "{{ vivisect_deps }}"
       register: pkg_result
       until: pkg_result is success
@@ -20,12 +23,14 @@
         executable: "{{ vivisect_pip }}"
       register: pkg_result
       until: pkg_result is success
-  when: vivisect_virtualenv_path is not defined or not vivisect_virtualenv_path
 
 - name: Virtualenv pip
+  when: vivisect_virtualenv_path is defined and vivisect_virtualenv_path
   block:
     - name: Virtualenv package dependencies
-      ansible.builtin.package: name={{ item }} state=present
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: "present"
       with_items: "{{ vivisect_deps + [vivisect_virtualenv] }}"
       register: pkg_result
       until: pkg_result is success
@@ -37,7 +42,7 @@
       register: pkg_result
       until: pkg_result is success
       when: vivisect_pip_virtualenv != []
-    - name: Ensure virtualenv user {{ vivisect_virtualenv_user }} exists
+    - name: Ensure virtualenv user exists - {{ vivisect_virtualenv_user }}
       ansible.builtin.user:
         name: "{{ vivisect_virtualenv_user }}"
         home: "{{ vivisect_virtualenv_home }}"
@@ -58,4 +63,3 @@
       ## FIXME! not idempotent
       # - name: ensure right permissions
       #   file: "dest={{ vivisect_virtualenv_path }} state=directory owner={{ vivisect_virtualenv_user }} recurse=yes"
-  when: vivisect_virtualenv_path is defined and vivisect_virtualenv_path
