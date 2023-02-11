@@ -21,6 +21,11 @@
     - name: Gather Facts
       ansible.builtin.setup:
       when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version | int >= 16)
+    - name: Debian | Refresh apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      when: ansible_os_family == "Debian"
     - name: Ubuntu Bionic+, Redhat 7+ | Enforce python3 for ansible
       ansible.builtin.set_fact:
         ansible_python_interpreter: /usr/bin/python3
