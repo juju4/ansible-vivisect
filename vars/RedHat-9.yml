@@ -1,0 +1,4 @@
+---
+
+vivisect_pip_virtualenv:
+  - virtualenv
