@@ -29,7 +29,7 @@ jobs:
           - molecule_distro: 'ubuntu:22.04'
             experimental: false
           - molecule_distro: 'ubuntu:20.04'
-            experimental: false
+            experimental: true
           - molecule_distro: 'debian:12'
             experimental: false
     env:
