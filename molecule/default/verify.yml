@@ -7,7 +7,7 @@
       ansible.builtin.set_fact:
         vivisect_pip: pip3
       when: >
-        (ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int >= 18)
+        (ansible_os_family == "Debian")
     - name: Redhat 7+ | Enforce python3
       ansible.builtin.set_fact:
         vivisect_pip: pip3
