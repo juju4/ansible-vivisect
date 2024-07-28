@@ -16,6 +16,10 @@
       with_items: "{{ vivisect_deps }}"
       register: pkg_result
       until: pkg_result is success
+
+    - name: Python externally managed
+      ansible.builtin.import_tasks: python-externally-managed.yml
+
     - name: Install vivisect with pip
       ansible.builtin.pip:
         name: "{{ vivisect_pip_module }}"

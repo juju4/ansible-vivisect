@@ -1,3 +1,5 @@
 ---
 
 vivisect_pip_virtualenv: []
+
+vivisect_python_version: "3.11"
