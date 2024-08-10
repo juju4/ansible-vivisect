@@ -3,3 +3,6 @@
 vivisect_pip_virtualenv: []
 
 vivisect_python_version: '3.12'
+
+vivisect_deps_conflict:
+  - python3-pyasn1-modules

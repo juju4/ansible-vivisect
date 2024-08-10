@@ -17,6 +17,12 @@
       register: pkg_result
       until: pkg_result is success
 
+    - name: Remove Python conflicting dependencies
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: "absent"
+      with_items: "{{ vivisect_deps_conflict | default([]) }}"
+
     - name: Python externally managed
       ansible.builtin.import_tasks: python-externally-managed.yml
 
