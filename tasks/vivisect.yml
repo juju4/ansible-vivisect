@@ -7,7 +7,7 @@
 #     version={{ vivisect_version }}
 
 - name: System pip
-  when: vivisect_virtualenv_path is not defined or not vivisect_virtualenv_path
+  when: vivisect_virtualenv_path is not defined or vivisect_virtualenv_path | length <= 0
   block:
     - name: Python dependencies
       ansible.builtin.package:
@@ -35,7 +35,7 @@
       until: pkg_result is success
 
 - name: Virtualenv pip
-  when: vivisect_virtualenv_path is defined and vivisect_virtualenv_path
+  when: vivisect_virtualenv_path is defined and vivisect_virtualenv_path | length > 0
   block:
     - name: Virtualenv package dependencies
       ansible.builtin.package:
