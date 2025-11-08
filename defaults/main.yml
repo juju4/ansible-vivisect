@@ -2,7 +2,8 @@
 
 toolsetdir: /opt/tools
 
-vivisect_version: HEAD
+# renovate: datasource=github-releases depName=vivisect/vivisect
+vivisect_version: 'v1.2.0'
 vivisect_pip_module: https://github.com/vivisect/vivisect/zipball/master
 
 ## if undefined, global install, else in corresponding virtualenv
