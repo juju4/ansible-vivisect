@@ -20,5 +20,5 @@
       register: pip
     - name: Validate pip
       ansible.builtin.assert:
-        that: >
-          "'vivisect' in pip.stdout"
+        that:
+          - "'vivisect' in pip.stdout"
