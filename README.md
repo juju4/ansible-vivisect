@@ -1,7 +1,7 @@
+# Vivisect ansible role
+
 [![Actions Status - Main](https://github.com/juju4/ansible-vivisect/workflows/AnsibleCI/badge.svg)](https://github.com/juju4/ansible-vivisect/actions?query=branch%3Amain)
 [![Actions Status - Devel](https://github.com/juju4/ansible-vivisect/workflows/AnsibleCI/badge.svg?branch=devel)](https://github.com/juju4/ansible-vivisect/actions?query=branch%3Adevel)
-
-# Vivisect ansible role
 
 Ansible role to setup Vivisect, static analysis / emulation / symbolik analysis framework.
 https://github.com/vivisect/vivisect
